@@ -2,6 +2,12 @@ from decimal import Decimal
 import math
 
 
+def sig_fig(num, sd):
+#     num = float(num) if type(num)==str else num
+    num = round(num, -len(str(num))+sd)
+    val = '%.'+str(sd-1)+'E'
+    return(val % Decimal(str(num)))
+
 class status_bar:
     """
     A simple status bar for loops.
@@ -51,15 +57,4 @@ class status_bar:
                 fin = str(self.finished),
                 reps = str(self.reps)
             ), end="\r")
-#             print('='*finished+'-'*(self.bar_size-finished)+' '+str(self.finished)+'/'+str(self.reps), end="\r")
         self.finished += 1
-
-
-
-
-
-def sig_fig(num, sd):
-#     num = float(num) if type(num)==str else num
-    num = round(num, -len(str(num))+sd)
-    val = '%.'+str(sd-1)+'E'
-    return(val % Decimal(str(num)))
