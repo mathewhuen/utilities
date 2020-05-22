@@ -58,3 +58,24 @@ class status_bar:
                 reps = str(self.reps)
             ), end="\r")
         self.finished += 1
+
+        
+import networkx as nx
+def path_dist(G, sep_dist=3/2):
+    """
+    G is an undirected nx graph
+    sep_dist is the modifier for non-connected nodes (distance will be max distance * sep_dist)
+    later just add an if-then for different types of graphs
+    """
+    paths = dict(nx.all_pairs_shortest_path_length(G))
+    n_obs = len(G.nodes)
+    dists = []
+    for i in range(n_obs):
+        vect = np.zeros(n_obs)
+        for j in range(i, n_obs):
+            vect[j] = paths[i].get(j, -1)
+        dists.append(vect.reshape(1,-1))
+    dists = np.vstack(dists)
+    dists += np.transpose(dists)
+    dists[np.where(dists==-1)] = int(np.max(dists)*sep_dist)
+    return dists
