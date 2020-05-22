@@ -11,4 +11,16 @@ path_dist - function for converting nx all_pairs_shortest_path_length generator 
 ### utils_pytorch.py
 row_tile - simple function for tiling first dimension of a tensor (will update later for multidimensional tiling)
 
-row_dist - function for calculating a distance matrix for all pairs of rows of a tensor (somewhat inefficient) 
+row_dist - function for calculating a distance matrix for all pairs of rows of a tensor (somewhat inefficient)
+
+SDC - Depthwise Separable Convolution Module (MobileNetV2)
+
+IR - Inverted Residual Module (MobileNetV2)
+
+RBF - An RBF Module
+
+gaussian - A gaussian kernel for the above RBF module
+
+inverse_quadratic - An inverse quadratic kernel for the above RBF module
+
+linear - A linear kernel for the above RBF module
